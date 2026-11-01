@@ -1,0 +1,96 @@
+Hier ist die vollständige deutsche Übersetzung der Projektseite der Chenguang E1 Mini ESP32-Drohne (Open-Source-Version) von der Plattform Jialichang (OSWHUB):
+
+Chenguang E1 Mini ESP32-Drohne (Open-Source-Version)
+
+Plattform: Jialichang Open-Source-Hardware-Plattform (立创开源硬件平台)
+Kategorie: ESP-Serie / Spark-Plan 2026 (星火计划2026)
+Replikationskosten: ca. 45 ¥ (ca. 6 Euro)
+Open-Source-Lizenz: CC BY-NC-SA 4.0 (Eine kommerzielle Nutzung oder Weiterverbreitung ohne Genehmigung des Autors ist untersagt)
+
+I. Projektbeschreibung
+
+Diese Mini-Quadcopter-Drohne basiert auf dem ESP32-Entwicklungsboard. Die Hauptsteuerung nutzt einen ESP32-Chip, verwendet nur einen einzigen Lagesensor (Gyroskop/IMU) und verfügt über eine integrierte Web-Fernsteuerung.
+Das extrem minimalistische Hardware- und Softwaredesign macht den Einstieg besonders leicht. Nach einfachem Löten und dem Aufspielen der Firmware ist keine komplexe Konfiguration erforderlich – einfach das Smartphone verbinden und abheben. Minimalistisch, aber oho!
+• Integrierte Web-Fernsteuerung: Die Drohne wird direkt über eine Website auf dem Smartphone gesteuert; es muss keine zusätzliche App oder physische Fernsteuerung installiert werden. (Physische Fernsteuerungen und Apps werden jedoch optional unterstützt).
+• Support: Offizielle QQ-Kommunikationsgruppen: 748767634 (Gruppe 1) und 550386989 (Gruppe 2).
+
+II. Video-Links (Bilibili)
+
+• [B站视频--详细介绍+组装教程] (Detaillierte Vorstellung + Montage-Tutorial)
+• [B站视频--网页遥控操控手动定高] (Web-Steuerung & Manuelle Höhenhaltung)
+• [B站视频--漂移的分析和处理] (Analyse und Behebung von Drift-Problemen)
+
+III. Projekt-Replikation (In drei Schritten zum Flug)
+
+Wenn du dich an die Anleitung hältst, wird sie garantiert fliegen!
+
+Schritt 1: Hardware-Montage
+
+1. Materialien vorbereiten: Lade die Materialliste (物料清单表格) im Anhang dieser Seite herunter, bereite die Bauteile vor und lasse die Platine bei Jialichang fertigen (oder kaufe ein fertiges Teile-Kit).
+	• Die reinen Materialkosten liegen bei ca. 45 RMB. Durch Versandkosten und Mindestabnahmemengen beim Einkauf kann der reale Preis höher ausfallen.
+	• Netzwerkfehler beim PCB-Design: Ignoriere eventuelle „Netzlisten-Fehler“ (Netlist Errors) bei der Bestellung auf Jialichang, das Layout ist korrekt.
+	• Dicke der Platine (PCB): Verwende unbedingt die Standarddicke von 1.6 mm, da alle Steckverbindungen für Rahmen und Halterungen darauf ausgelegt sind.
+	• Entwicklungsboard: Benötigt wird ein ESP32 30-PIN Board (Standard-ESP32 ohne Suffix wie C3 oder S3, genau 30 Pins).
+	• Akku: Verwende einen 1S-Modellbau-/Drohnen-Akku (3,7V - 4,2V) mit hoher Entladerate (C-Rate). Keine normalen Lithium-Akkus nutzen!
+2. PCB trennen: Die Platine enthält die Motorhalterungen an den Außenseiten und die Hauptsteuerung in der Mitte. Da der kostenlose Gutschein keine Nutzen-Nut-Trennung erlaubt, wird die Platine ungeschnitten geliefert. Trenne die Arme und die Mitte vorsichtig mit einem Elektronik-Seitenschneider.
+3. Komponenten löten: Löte zuerst die kleinsten SMD-Bauteile (0603), dann die größeren SMD-Teile und zum Schluss die Stecker und Stiftleisten.
+	• Die zwei großen 470µF-Kondensatoren dienen der Stabilisierung der Akkuspannung. Bei sehr hochwertigen Akkus können sie weggelassen werden. Die LEDs sind ebenfalls optional.
+	• Das Gyroskop-Modul (IMU) kann direkt flach auf die Hauptplatine gelötet werden (ohne Stiftleisten), um mechanische Toleranzen zu minimieren.
+	• Sicherheitstest: Überprüfe die Platine nach dem Löten unbedingt mit einem Multimeter auf Kurzschlüsse und kalte Lötstellen, bevor du den Akku ansteckst!
+4. Motorhalterungen verlöten: Die PCB-Halterungen schützen die Drohne bei Abstürzen und dienen als Landegestell. Die Schlitze für den Akkuhalter (Höhe 12 mm) mit reichlich Lötzinn auf den Lötpads fixieren und verstärken.
+5. Motoren installieren: Die Motoren müssen sich in die vorgegebene Richtung drehen. Die Richtungen sind auf der Platine aufgedruckt. Diagonal gegenüberliegende Motoren drehen sich in die gleiche Richtung. Nutze 2x Rot-Blau (CW) und 2x Schwarz-Weiß (CCW) Motoren zur besseren Unterscheidung. Fixierung per Gummi-O-Ring oder Heißkleber.
+6. Propeller montieren: Auch die Propeller haben eine feste Richtung (A und B). Die höhere Kante zeigt in Drehrichtung nach vorn, sodass die Luft nach unten geblasen wird. Tipp: Nach dem Entsperren ohne Propeller prüfen, ob der Luftstrom bei Montage nach unten blasen würde. Der Propellerschutz (3D-Druck) wird dringend empfohlen.
+
+Schritt 2: Software flashen
+
+1. Lade die fertig kompilierte .bin-Firmware-Datei aus dem Anhang herunter.
+2. Verbinde das ESP32-Board per USB-Kabel mit dem PC (ggf. CH340-Treiber installieren).
+3. Nutze das offizielle Espressif Flash Download Tool:
+	• Wähle die .bin-Datei aus, trage die Adresse 0x0000 ein und setze den Haken.
+	• Wähle den richtigen COM-Port aus (ändert sich beim Ein-/Ausstecken) und klicke auf START, bis „FINISH“ angezeigt wird.
+
+Schritt 3: Kalibrierung & Erstflug
+
+1. Akku anstecken und mit dem Smartphone in das WLAN Drone_WIFI einwählen (Passwort: 12345678). Tipp: Mobile Daten am Handy ausschalten, da manche Smartphones sonst die Verbindung trennen.
+2. Öffne den Browser und rufe http://192.168.4.1 auf, um das Steuerungs-Interface zu laden.
+3. IMU-Kalibrierung (Zwingend erforderlich): Klicke auf „Debug“ (调试) und nimm die Propeller ab. Gib den Befehl ca ein und bringe die Drohne nacheinander in die 6 geforderten Positionen (jeweils 8 Sekunden stillhalten):
+	1. Horizontal (normal auf dem Tisch)
+	2. Nase nach oben (senkrecht zum Himmel)
+	3. Nase nach unten (senkrecht zum Boden)
+	4. Rechte Seite nach unten
+	5. Linke Seite nach unten
+	6. Auf dem Rücken liegend (kopfüber)
+
+	• Gib danach den Befehl ps ein. Wenn die Werte für roll und pitch zwischen ±0.5° liegen, war es erfolgreich (Werte über 5° erfordern eine Neukalibrierung; yaw kann ignoriert werden).
+4. Motorentest (Optional): Gib die Befehle mfl (vorne links), mfr (vorne rechts), mrl (hinten links) oder mrr (hinten rechts) ein, um die Drehrichtung der einzelnen Motoren zu prüfen.
+5. Starten: Auf „Unlock“ (解锁) klicken, Gashebel (Throttle) nach oben schieben und abfliegen!
+
+IV. Erweiterte Funktionen & Entwicklung
+
+(Kann bei reinem Nachbau ignoriert werden)
+
+Ressourcen:
+
+• Dokumentation & FAQ: http://cherglowtech.com
+• Passende Bodenstation (GCS): https://cherglowtech.com
+• Quellcode (GitHub): https://github.com
+• Die Software basiert auf der Arduino IDE.
+
+Schnittstellen & Erweiterungen:
+
+• Das Board bietet 4 Daten-Schnittstellen (Standardmäßig belegt mit: I2C, SPI, RC-Empfänger, Backup).
+• Das optionale Chenguang-Sensor-Erweiterungsmodul (enthält Barometer, Magnetometer, Lasersensor und optischen Fluss/Optical Flow) ermöglicht automatische Höhenhaltung und Position Hold (Punkt-Schwebeflug).
+• Schnittstellen für bürstenlose Regler (ESC) sind vorhanden, um die Drohne auf Brushless-Motoren umzurüsten.
+
+Unterstützte Fernsteuerungen:
+
+• Modellbau-Fernsteuerungen: Unterstützt ELRS, CRSF und SBUS. SBUS ist softwareseitig invertiert (kein Hardware-Inverter nötig). ELRS benötigt nur 3 Kabel (GND, 5V, TX → RX_PIN).
+• Protokoll-Konfiguration: Über die Konsole änderbar mittels p RC_PROTOCOL 0 (für SBUS) oder 1 (für CRSF/ELRS, Standard).
+• QGC App: Unterstützt das MAVLINK-Protokoll über die App QGroundControl.
+
+V. Wichtige Auszüge aus den Kommentaren (FAQ)
+
+• Entwicklungsboard-Upgrade auf S3: Ein Nutzer fragte nach Plänen für den ESP32-S3. Der Entwickler (songge8) antwortete: „Die Software unterstützt bereits den ESP32-S3, aber für die Hardware-Platine E1 Mini gibt es aktuell keine Pläne, auf den S3 zu wechseln.“
+• 716er Coreless-Motoren: Der Entwickler rät von 716er Motoren ab, da die Montagebohrungen auf dem PCB exakt für 8520er Coreless-Motoren ausgelegt sind.
+• Probleme bei 192.168.4.1: Falls die Website nicht lädt, liegt es meist an den mobilen Daten des Smartphones, die das unverschlüsselte Drohnen-WLAN blockieren (Datenverbindung am Handy während des Fliegens deaktivieren!).
+Möchtest du, dass ich dir den Schaltplan (原理图) oder die Pin-Belegung für den ELRS/CRSF-Empfänger näher erkläre?
