@@ -1,0 +1,43 @@
+Das ist eine sehr präzise Anleitung für das Kompilieren eines ESP32-Projekts (speziell für eine CF-Drone).
+Es wird auf kritische Versionskonflikte hingewiesen, die bei der ESP32-Entwicklung mit der Arduino IDE oft zu Fehlern führen.
+Hier ist die strukturierte Zusammenfassung und die genaue Anleitung, wie du deine Arduino IDE exakt so einrichtest, damit die Kompilierung fehlerfrei durchläuft:
+
+⚙️ Vorbereitung der Arduino IDE (Schritt für Schritt)
+
+
+1. Arduino IDE aktualisieren
+
+• Stelle sicher, dass du Version 2.3.x oder neuer nutzt (die alte Version 1.8.19 funktioniert hier nicht).
+• Falls nicht vorhanden, lade die aktuelle Version von der offiziellen Arduino-Website herunter.
+
+2. ESP32-Core-Repository hinzufügen (falls noch nicht geschehen)
+
+1. Öffne die Arduino IDE.
+2. Gehe auf File (Datei) > Preferences (Voreinstellungen).
+3. Füge bei Additional Boards Manager URLs folgende Zeile hinzu:
+https://github.io
+4. Klicke auf OK.
+
+3. ESP32-Board-Verzeichnis installieren (Wichtig: Version 3.3.x wählen!)
+
+1. Klicke links in der Menüleiste auf das Board-Manager-Symbol (das zweite Symbol von oben).
+2. Suche nach esp32 (von Espressif Systems).
+3. Wichtig: Wähle im Dropdown-Menü der Version explizit eine Version aus der 3.3.x-Reihe (z. B. 3.3.0 oder die aktuellste 3.3.x). Nicht auf Version 2.x.x belassen oder blind die allerneueste 4.x/Beta-Version wählen, falls vorhanden!
+4. Klicke auf Install.
+
+4. Abhängigkeiten (Bibliotheken) installieren
+
+1. Klicke links auf das Bibliotheksverzeichnis-Symbol (Bücher-Symbol).
+2. Suche nach MAVLink und installiere die entsprechende Bibliothek, die für das Projekt benötigt wird.
+
+🚀 Projekt öffnen & Board auswählen
+
+1. Gehe auf File (Datei) > Open (Öffnen) und wähle die Datei CF-Drone.ino aus.
+2. Gehe auf Tools (Werkzeuge) > Board > esp32 und wähle eines der folgenden Boards aus:
+	• ESP32 Dev Module
+	• WeMOS D1 MINI ESP32 (je nachdem, welche Hardware du vor dir liegen hast).
+3. Wähle unter Tools > Port den passenden COM-Port deiner Drohne aus.
+4. Klicke auf das Häkchen-Symbol (Verify) oben links, um den Code zu testen, oder auf den Pfeil (Upload), um ihn direkt auf die Drohne zu spielen.
+Sollte es beim Kompilieren trotzdem zu Fehlern kommen, kopiere einfach die Fehlermeldung hierher. Lass mich wissen:
+• Tritt der Fehler direkt beim Überprüfen (Verify) oder erst beim Hochladen (Upload) auf?
+• Welches Betriebssystem (Windows, macOS, Linux) nutzt du?
