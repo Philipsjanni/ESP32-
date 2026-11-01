@@ -1,0 +1,67 @@
+Hier ist die vollständige und strukturierte Übersetzung des bereitgestellten Handbuchs für das ESP32-Drohnen-Kit:
+
+Zave / Xinwei (欣薇) – Drohnen-Kit Montage- und Bedienungsanleitung
+
+
+I. Montage von Motoren und Propellern
+
+
+(1) Motor-Installation
+
+Achten Sie beim Einbau der Motoren unbedingt auf die richtige Position. Wenn Sie das fertige Modell (RTF) erworben haben, können Sie die Motoren direkt anhand der unten stehenden Farbkennzeichnung der Kabel installieren. Wenn Sie den Bausatz (Einzelteile) gekauft haben, richten Sie sich nach der Kabelreihenfolge, die Sie beim Löten gewählt haben (siehe hierzu das Video-Tutorial).
+• Oben Links: Rot-blaues Kabel
+• Oben Rechts: Schwarz-weißes Kabel
+• Unten Links: Schwarz-weißes Kabel
+• Unten Rechts: Rot-blaues Kabel
+
+(2) Propeller-Installation
+
+Achten Sie bei der Montage der Propeller genau auf die Markierungen darauf. Installieren Sie sie nicht an der falschen Position, da dies sonst das Flugverhalten beeinträchtigt.
+• Oben Links: A-Propeller
+• Oben Rechts: B-Propeller
+• Unten Links: B-Propeller
+• Unten Rechts: A-Propeller
+
+II. Installation und Flashen des Entwicklungsboards
+
+
+(1) Board-Ausrichtung
+
+Achten Sie beim Einsetzen des Entwicklungsboards darauf, dass die Schnittstelle (USB-Anschluss) in die gleiche Richtung zeigt wie der Batterieanschluss. Stecken Sie es nicht verkehrt herum ein.
+
+(2) Treiber-Vorbereitung
+
+Vor dem Flashen der Firmware muss der serielle Treiber installiert werden. Die Treiberdatei finden Sie in den bereitgestellten Materialien (Anleitung im Video-Tutorial). Wenn die Installation fehlschlägt, ist der Treiber möglicherweise bereits installiert. Wichtig ist nur, dass der COM-Port im Geräte-Manager als CH340 erkannt wird. Falls die Installation fehlschlägt und der COM-Port gar nicht erkannt wird, liegt dies eventuell am Computer – versuchen Sie es in diesem Fall an einem anderen PC.
+
+(3) Firmware flashen (mit dem ESP32 Flash Download Tool)
+
+Klicken Sie auf den Button mit den drei Punkten "...", um die gewünschte Firmware-Datei auszuwählen.
+• Pfad im Ordner: ESP32迷你无人机套件资料 > 固件 > XW-Drone.ino.merged.bin.
+• Adresse: Tragen Sie rechts daneben zwingend die Adresse 0x0000 ein.
+• COM-Port & Start: Wählen Sie den richtigen COM-Port aus und klicken Sie auf START.
+
+(4) Problembehandlung bei USB-Verbindung
+
+Falls der COM-Port trotz installiertem Treiber nicht erkannt wird, unterstützt das verwendete USB-C-Kabel möglicherweise keine Datenübertragung (reines Ladekabel). Tauschen Sie es gegen ein anderes Datenkabel aus.
+
+III. Kalibrierung und Bedienung
+
+
+(1) WLAN-Verbindung
+
+Schalten Sie die Drohne nach dem erfolgreichen Flashen der Firmware ein. Suchen Sie mit dem Smartphone nach dem WLAN-Netzwerk XW_Drone_WiFi und verbinden Sie sich mit dem Passwort 12345678. Öffnen Sie nach erfolgreicher Verbindung den Smartphone-Browser und rufen Sie die Adresse 192.168.4.1:8080 auf (Achten Sie darauf, den Doppelpunkt : im englischen/Standard-Tastaturmodus einzugeben).
+
+(2) Sensor-Kalibrierung (IMU)
+
+Vor dem ersten Flug muss die Drohne kalibriert werden. Klicken Sie auf der Benutzeroberfläche auf den Button "Debug" (调试), geben Sie den Befehl ca ein und folgen Sie den Anweisungen zur Kalibrierung (Details dazu finden Sie im Video-Tutorial).
+
+(3) Starten und Fliegen
+
+Nach der Kalibrierung können Sie den Testflug starten. Klicken Sie zuerst auf "Entsperren" (解锁), woraufhin sich die Propeller zu drehen beginnen.
+• Linker Joystick (Gas/Yaw): Nach oben drücken, um Gas zu geben – die Drohne hebt langsam ab. Nach links/rechts bewegen, um die Gierachse (Drehung um die eigene Achse) zu steuern.
+• Rechter Joystick (Pitch/Roll): Steuert das Nicken (Vorwärts/Rückwärts) und Rollen (Links/Rechts).
+
+(4) Landen und Sichern
+
+Reduzieren Sie das Gas beim Landen nur sehr langsam, da die Drohne sonst unsanft abstürzt und beschädigt werden kann. Klicken Sie auf den Button "Sperren" (上锁), um die Motoren komplett zu stoppen. Es wird empfohlen, beim Testfliegen anfangs nicht zu hoch zu fliegen, um sich zuerst mit der Funktionsweise der Joysticks vertraut zu machen.
+Möchtest du als Nächstes Hilfe bei den Konsolenbefehlen für die Kalibrierung (ca) haben oder gibt es Probleme beim Erkennen des CH340-Treibers unter Windows/macOS?
