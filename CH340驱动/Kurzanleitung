@@ -1,0 +1,17 @@
+Das klingt nach einer Kurzanleitung für eine Softwareinstallation oder einer typischen Antwort vom Support, wenn etwas schiefgelaufen ist.
+Wenn du gerade versuchst, ein Programm zu installieren, und es nicht klappt, findest du hier eine einfache Schritt-für-Schritt-Anleitung, um das Problem zu lösen:
+
+🛠️ Was du tun kannst, wenn die Installation fehlschlägt
+
+1. Richtig deinstallieren (falls es schon mal da war)
+	• Lösche nicht einfach nur den Ordner oder das Icon.
+	• Gehe in Windows auf Einstellungen > Apps > Installierte Apps (oder Systemsteuerung).
+	• Suche das Programm, klicke auf Deinstallieren und starte danach den PC neu.
+2. Als Administrator ausführen
+	• Manchmal blockiert Windows die Installation aus Sicherheitsgründen.
+	• Mach einen Rechtsklick auf die .exe-Datei und wähle "Als Administrator ausführen".
+3. Antivirenprogramm kurz ausschalten
+	• Windows Defender oder Programme wie Avira/Bitdefender blockieren manchmal fälschlicherweise harmlose Setups (sogenannte „False Positives“).
+	• Schalte den Schutz kurz aus, installiere das Programm und schalte ihn danach sofort wieder ein.
+4. Speicherplatz und Pfad prüfen
+	• Stelle sicher, dass auf deiner Festplatte (meistens Laufwerk C:) genug Platz frei ist.
